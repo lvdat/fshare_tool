@@ -1,0 +1,13 @@
+[Auth]
+mail = 
+password = 
+user_agent = 
+app_key = 
+
+[API]
+user_api_url = https://api.fshare.vn/api/user
+
+[Login]
+session_id = 
+token = 
+
