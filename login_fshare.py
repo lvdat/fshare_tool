@@ -3,10 +3,7 @@
 #
 # 2022 (c) levandat
 #
-
-from ast import parse
 import configparser
-from distutils.command.config import config
 import requests
 import sys
 import json

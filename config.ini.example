@@ -11,3 +11,6 @@ user_api_url = https://api.fshare.vn/api/user
 session_id = 
 token = 
 
+[Drive]
+folder_id = 
+path_to_gdrive = /usr/bin/gdrive
