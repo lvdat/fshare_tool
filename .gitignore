@@ -1,3 +1,8 @@
 .vscode/
 config.ini
 testing.py
+__pycache__
+
+# comming soon features
+settings.yaml
+upload_to_Drive.py
