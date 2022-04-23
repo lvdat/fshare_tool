@@ -58,3 +58,7 @@ print("-> Save Folder: /downloaded")
 chunk_download(DL_URL, FILE_NAME)
 print("+--------------------------------------------------+")
 print("-> Done! Starting upload to Drive...")
+
+DRIVE_FOLDER = cf['Drive']['folder_id']
+pushToDrive('downloaded/' + FILE_NAME, DRIVE_FOLDER)
+
