@@ -3,8 +3,10 @@
 #
 # 2022 (c) levandat
 #
-import requests, configparser, json, sys
+# f_dl.py <File URL> [File Password]
+import requests, configparser, json, sys, urllib
 from function import *
+from urllib.parse import unquote
 
 FILE_PASSWORD = ''
 if len(sys.argv) == 1:
@@ -41,5 +43,18 @@ r = rq_fshare(URL = FILE_DL_API_URL, header = header, Data = Data)
 if r.status_code != 200:
     exit(errorInfo(r.status_code))
 
+j = requestToJson(r)
 
-print(requestToJson(r))
+DL_URL = j['location']
+FILE_NAME = unquote(DL_URL.split('/')[-1])
+
+print("┌───────────┐")
+print("| File Info |")
+print("└───────────┘")
+print("+-------------+------------------------------------+")
+print("-> File Name:", FILE_NAME)
+print("-> Save Folder: /downloaded")
+
+chunk_download(DL_URL, FILE_NAME)
+print("+--------------------------------------------------+")
+print("-> Done! Starting upload to Drive...")

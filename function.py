@@ -35,7 +35,7 @@ def requestToJson(self):
     import json
     return json.loads(json.dumps(self.json()))
 
-def chunk_download(furl, name, folder = ''):
+def chunk_download(furl, name, folder = 'downloaded/'):
     import math, enlighten
     url = furl
     fname = name
@@ -44,10 +44,11 @@ def chunk_download(furl, name, folder = ''):
     r = requests.get(url, stream = True)
     assert r.status_code == 200, r.status_code
     dlen = int(r.headers.get('Content-Length', '0')) or None
+    print("-> File Size: ", "{:.2f}".format(dlen/(2**20)/1024),"GB (" + str(math.ceil(dlen/2**20)), "MB)")
     with MANAGER.counter(color = 'green', total = dlen and math.ceil(dlen / 2 ** 20), unit = 'MiB', leave = False) as ctr, \
         open(folder + fname, 'wb', buffering = 2 ** 24) as f:
         for chunk in r.iter_content(chunk_size = 2 ** 20):
-            print(chunk[-16:].hex().upper())
+            # print(chunk[-16:].hex().upper())
             f.write(chunk)
             ctr.update()
     return fname

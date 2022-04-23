@@ -2,6 +2,7 @@
 config.ini
 testing.py
 __pycache__
+downloaded/*
 
 # comming soon features
 settings.yaml
