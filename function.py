@@ -55,6 +55,6 @@ def chunk_download(furl, name, folder = 'downloaded/'):
 
 def pushToDrive(file = '', path = ''):
     import os
-    with os.popen("gdrive upload -p " + path + " " + file) as f:
+    with os.popen("gdrive upload -p " + path + " \"" + file + "\"") as f:
         print(f.readlines())
     
