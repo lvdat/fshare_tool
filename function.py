@@ -57,4 +57,6 @@ def pushToDrive(file = '', path = ''):
     import os
     with os.popen("gdrive upload -p " + path + " \"" + file + "\"") as f:
         print(f.readlines())
-    
+    print("-> Deleting local File...")
+    print("rm -rf " + path)
+    os.popen("rm -rf " + path)
