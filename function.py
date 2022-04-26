@@ -55,8 +55,11 @@ def chunk_download(furl, name, folder = 'downloaded/'):
 
 def pushToDrive(file = '', path = ''):
     import os
-    with os.popen("gdrive upload -p " + path + " \"" + file + "\"") as f:
+    print("gdrive upload -p " + path + " '" + file + "'")
+    with os.popen("gdrive upload -p " + path + " '" + file + "'") as f:
         print(f.readlines())
+    #debug
+
     print("-> Deleting local File...")
-    print("rm -rf " + path)
-    os.popen("rm -rf " + path)
+    print("rm -rf " + "'" + file + "'")
+    os.popen("rm -rf " + "'" + file + "'")
