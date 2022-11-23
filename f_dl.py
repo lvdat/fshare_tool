@@ -70,5 +70,3 @@ if(cf['Drive']['onedrive'] == 1):
     print('-> Uploading to OneDrive...')
     pushToOneDrive('downloaded/' + FILE_NAME, REMOTE_NAME, ONEDRIVE_PATH)
 
-pushToDrive('downloaded/' + FILE_NAME, DRIVE_FOLDER)
-
