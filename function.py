@@ -60,6 +60,15 @@ def pushToDrive(file = '', path = ''):
         print(f.readlines())
     #debug
 
+def pushToOneDrive(file = '', remotename ='', path = ''):
+    import os
+    cmd = "rclone copy '" + file + "' " + remotename + ":" + path + " --drive-chunk-size 64M --drive-acknowledge-abuse --drive-keep-revision-forever --drive-use-trash=false"
+    print(cmd)
+    with os.popen(cmd) as f:
+        print(f.readlines())
+
+def removeFile(file = ''):
+    import os
     print("-> Deleting local File...")
     print("rm -rf " + "'" + file + "'")
     os.popen("rm -rf " + "'" + file + "'")
