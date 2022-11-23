@@ -59,12 +59,12 @@ chunk_download(DL_URL, FILE_NAME)
 print("+--------------------------------------------------+")
 print("-> Done! Starting upload to Drive...")
 
-if(cf['Drive']['gdrive'] == 1):
+if(cf['Drive']['gdrive'] == "1"):
     DRIVE_FOLDER = cf['Drive']['folder_id']
     print('-> Uploading to Google Drive...')
     pushToDrive('downloaded/' + FILE_NAME, DRIVE_FOLDER)
 
-if(cf['Drive']['onedrive'] == 1):
+if(cf['Drive']['onedrive'] == "1"):
     REMOTE_NAME = cf['Drive']['rclone_remote_name']
     ONEDRIVE_PATH = cf['Drive']['onedrive_folder_path']
     print('-> Uploading to OneDrive...')
