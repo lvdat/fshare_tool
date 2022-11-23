@@ -62,7 +62,7 @@ def pushToDrive(file = '', path = ''):
 
 def pushToOneDrive(file = '', remotename ='', path = ''):
     import os
-    cmd = "rclone copy '" + file + "' " + remotename + ":" + path + " --drive-chunk-size 64M --drive-acknowledge-abuse --drive-keep-revision-forever --drive-use-trash=false"
+    cmd = "rclone copy '" + file + "' " + remotename + ":" + path + " --drive-acknowledge-abuse --drive-keep-revision-forever --drive-use-trash=false"
     print(cmd)
     with os.popen(cmd) as f:
         print(f.readlines())
