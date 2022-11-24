@@ -1,0 +1,2 @@
+enlighten==1.10.2
+requests==2.27.1

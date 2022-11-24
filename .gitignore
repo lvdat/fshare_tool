@@ -1,2 +1,10 @@
 .vscode/
 config.ini
+testing.py
+__pycache__
+downloaded/*
+!downloaded/.gitkeep
+
+# comming soon features
+settings.yaml
+upload_to_Drive.py
