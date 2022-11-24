@@ -6,6 +6,7 @@ app_key =
 
 [API]
 user_api_url = https://api.fshare.vn/api/user
+file_dl_api_url = https://api.fshare.vn/api/session/download
 
 [Login]
 session_id = 
