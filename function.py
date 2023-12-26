@@ -70,5 +70,6 @@ def pushToOneDrive(file = '', remotename ='', path = ''):
 def removeFile(file = ''):
     import os
     print("-> Deleting local File...")
-    print("rm -rf " + "'" + file + "'")
-    os.popen("rm -rf " + "'" + file + "'")
+    # print("rm -rf " + "'" + file + "'")
+    # os.popen("rm -rf " + "'" + file + "'")
+    os.remove(file)
