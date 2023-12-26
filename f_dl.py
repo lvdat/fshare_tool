@@ -76,5 +76,7 @@ if(cf['Drive']['onedrive'] == "1"):
     print('-> Uploading to OneDrive...')
     pushToOneDrive(FILE_FULL_PATH, REMOTE_NAME, ONEDRIVE_PATH)
 
-print("-> Done! Removing downloaded file...")
-removeFile(FILE_FULL_PATH)
+REMOVE_FILE = (cf['Drive']['gdrive'] != "1" and cf['Drive']['onedrive'] != "1") or (cf['Drive']['gdrive'] == "1" or cf['Drive']['onedrive'] == "1" and cf['Drive']['remove_file_after_upload'] == 'True')
+if REMOVE_FILE:
+    print("-> Done! Removing downloaded file...")
+    removeFile(FILE_FULL_PATH)
