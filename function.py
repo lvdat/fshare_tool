@@ -1,8 +1,12 @@
-import requests, configparser, sys
+import requests, configparser, sys, os
 
 # sys func
 def exit(err):
     sys.exit(err)
+    
+if not os.path.isfile('config.ini'):
+    print('Missing config file! Please read tutorial and create a config file.')
+    exit(0)
 
 def myParser(path = 'config.ini'):
     ps = configparser.ConfigParser()
