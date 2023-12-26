@@ -4,7 +4,7 @@
 # 2022 (c) levandat
 #
 # f_dl.py <File URL> [File Password]
-import requests, configparser, json, sys, urllib
+import requests, configparser, json, sys, urllib, os
 from function import *
 from urllib.parse import unquote
 
@@ -47,28 +47,34 @@ j = requestToJson(r)
 
 DL_URL = j['location']
 FILE_NAME = unquote(DL_URL.split('/')[-1])
+FOLDER_DOWNLOAD = cf['Drive']['file_download_path']
+FILE_FULL_PATH = FOLDER_DOWNLOAD + FILE_NAME
+
+if not os.path.exists(FOLDER_DOWNLOAD):
+    os.makedirs(FOLDER_DOWNLOAD)
+### Create directory if it not exist.
 
 print("┌───────────┐")
 print("| File Info |")
 print("└───────────┘")
 print("+-------------+------------------------------------+")
-print("-> File Name:", FILE_NAME)
-print("-> Save Folder: /downloaded")
+print("-> File Name: " + FILE_NAME)
+print("-> Save Folder: " + FOLDER_DOWNLOAD)
 
-chunk_download(DL_URL, FILE_NAME)
+chunk_download(DL_URL, FILE_NAME, FOLDER_DOWNLOAD)
 print("+--------------------------------------------------+")
-print("-> Done! Starting upload to Drive...")
+print("-> Done! Starting upload to Drive..." if cf['Drive']['gdrive'] == "1" or cf['Drive']['onedrive'] == "1" else "You are in download only mode, if you want upload to Drive please config!")
 
 if(cf['Drive']['gdrive'] == "1"):
     DRIVE_FOLDER = cf['Drive']['folder_id']
     print('-> Uploading to Google Drive...')
-    pushToDrive('downloaded/' + FILE_NAME, DRIVE_FOLDER)
+    pushToDrive(FILE_FULL_PATH, DRIVE_FOLDER)
 
 if(cf['Drive']['onedrive'] == "1"):
     REMOTE_NAME = cf['Drive']['rclone_remote_name']
     ONEDRIVE_PATH = cf['Drive']['onedrive_folder_path']
     print('-> Uploading to OneDrive...')
-    pushToOneDrive('downloaded/' + FILE_NAME, REMOTE_NAME, ONEDRIVE_PATH)
+    pushToOneDrive(FILE_FULL_PATH, REMOTE_NAME, ONEDRIVE_PATH)
 
 print("-> Done! Removing downloaded file...")
-removeFile('downloaded/' + FILE_NAME)
+removeFile(FILE_FULL_PATH)
