@@ -1,3 +1,5 @@
+**⚠️ According to Fshare's latest policy, they no longer provide API access to individual users. I'm too busy to find another solution, any contributions via PR or Telegram (@levandat) are welcome.**
+
 # Fshare Tool - Download, save and upload to Google Drive, OneDrive using Fshare API.
 
 ## Introduction
